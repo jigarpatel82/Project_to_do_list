@@ -1,0 +1,47 @@
+{% block body %}
+<div class="container-fluid">
+<form action="url_for('index', task_id=task.id)" method="post">
+{% for task in tasks %}
+  {% if task.check_box == True %}
+  <div class="form-check mb-3">
+  <input class="form-check-input big-checkbox" type="checkbox" value="" id="{{task.id}}" name="{{task.id}}">
+  <s><label class="form-check-label h4 ml-4" for="{{task.id}}">
+    {{ task.task }}
+  </label>
+  </s>
+</div>
+  {% else %}
+<div class="form-check mb-3">
+  <input class="form-check-input big-checkbox" type="checkbox" value="" id="{{task.id}}" name="{{task.id}}">
+  <label class="form-check-label h4 ml-4" for="{{task.id}}">
+    {{ task.task }}
+  </label>
+</div>
+  {% endif %}
+{% endfor %}
+</form>
+</div>
+{% endblock %}
+
+
+{% block body %}
+<link rel="stylesheet" href="/static/style.css">
+{{wtf.quick_form(form=add_task_form, method='post', button_map={'submit':'danger'})}}
+<div class="container-fluid">
+{% for task in tasks %}
+<form action="url_for('all_tasks', task_id=task.id)" method="post" class="form-inline">
+{{ all_task_form.csrf_token() }}
+    {{ wtf.form_field(all_task_form.check_box, class="checkmark", type='submit') }}
+    {{ wtf.form_field(all_task_form.task_field, class='mb-2 ml-2 no-border form-control-plaintext' , value=task.task, type='text', readonly='readonly') }}
+</form>
+{% endfor %}
+</div>
+{% endblock %}
+
+
+<div class="form-check mb-3 p-2 bg-secondary bg-opacity-10 text-white">
+  <input class="form-check-input big-checkbox" type="checkbox" value="" id="{{task.id}}" name="{{task.id}}" disabled>
+  <label class="form-check-label h4 ml-4 text-white " for="{{task.id}}">
+    <s>{{ task.task }}</s>
+  </label>
+        </div>

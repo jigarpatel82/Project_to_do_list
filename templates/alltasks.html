@@ -1,0 +1,4 @@
+{% block body %}
+{% import "bootstrap/wtf.html" as wtf %}
+{{wtf.quick_form(form=form, method='post', button_map={'submit':'danger'})}}
+{% endblock %}

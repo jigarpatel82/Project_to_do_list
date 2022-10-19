@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <style>
+      .alert-error {
+        padding: 8px;
+        color: red;
+      }
+   </style>
+<div class="container-fluid mt-3">
+    {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert-error">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+{{ wtf.quick_form(form=form, method='post', button_map={'submit':'success'}) }}
+</div>
+{% endblock %}
