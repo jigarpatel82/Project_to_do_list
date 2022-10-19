@@ -81,7 +81,6 @@ def load_user(user_id):
 def index():
     task_form = AddTask()
     user_form = AddUser()
-    print(session)
 
     # this code checks if user is authenticated then their data will be saved in db else it will be saved in session
     if current_user.is_authenticated:
@@ -184,7 +183,6 @@ def all_tasks(task_id):
 def delete(task_id):
     if current_user.is_authenticated:
         task = TaskData.query.filter_by(id=task_id).first()
-        print(task)
         db.session.delete(task)
         db.session.commit()
         return redirect(url_for('index'))
