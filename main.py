@@ -14,7 +14,7 @@ import gunicorn
 from decouple import config
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todo.db'
-app.config['SECRET_KEY'] = config['KEY']
+app.config['SECRET_KEY'] = config('KEY')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 db = SQLAlchemy(app)
