@@ -4,7 +4,6 @@ from flask_bootstrap import Bootstrap
 from flask_login import UserMixin, current_user
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from sqlalchemy.orm import relationship
 from wtforms import StringField, PasswordField, SubmitField, SelectField, DateField, BooleanField
 from wtforms.validators import DataRequired
 import datetime
